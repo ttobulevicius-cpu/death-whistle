@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Handcrafted Aztec Screaming Death Whistle | Ancient Horror Replica</title>
+  <title>The Aztec Screaming Death Whistle | Handcrafted Horror Replica</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +42,7 @@
       letter-spacing: 0.04em;
     }
 
-    /* Top Urgency Banner */
+    /* Top Announcement Bar */
     .top-bar {
       background: linear-gradient(90deg, #7f1d1d, #dc2626, #7f1d1d);
       color: #fff;
@@ -53,7 +53,7 @@
       letter-spacing: 0.03em;
     }
 
-    /* Nav */
+    /* Navigation */
     header {
       display: flex;
       justify-content: space-between;
@@ -108,7 +108,7 @@
       align-items: start;
     }
 
-    /* Interactive Gallery */
+    /* Gallery */
     .gallery-container {
       position: sticky;
       top: 100px;
@@ -128,8 +128,8 @@
     }
 
     .product-img {
-      max-width: 88%;
-      max-height: 88%;
+      max-width: 86%;
+      max-height: 86%;
       object-fit: contain;
       filter: drop-shadow(0 20px 30px rgba(0,0,0,0.85));
       transition: transform 0.3s ease;
@@ -208,7 +208,7 @@
       color: #000;
     }
 
-    /* Product Specs & Info */
+    /* Product Details */
     .hero-info .rating {
       color: var(--gold-light);
       font-size: 0.95rem;
@@ -219,7 +219,7 @@
     }
 
     .hero-info h1 {
-      font-size: 2.4rem;
+      font-size: 2.35rem;
       line-height: 1.2;
       margin-bottom: 16px;
     }
@@ -227,24 +227,18 @@
     .price-box {
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 14px;
       margin-bottom: 20px;
     }
 
     .current-price {
-      font-size: 2.2rem;
+      font-size: 2.3rem;
       font-weight: 800;
       color: #ef4444;
     }
 
-    .usd-approx {
-      font-size: 1rem;
-      color: var(--text-muted);
-      font-weight: 600;
-    }
-
     .old-price {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       text-decoration: line-through;
       color: var(--text-muted);
     }
@@ -264,7 +258,7 @@
       font-size: 1rem;
     }
 
-    /* Variant Selector */
+    /* Two Variant Options */
     .variant-section {
       margin-bottom: 28px;
     }
@@ -281,21 +275,22 @@
 
     .variant-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     .variant-btn {
-      padding: 12px;
+      padding: 14px;
       border: 1px solid var(--border);
       border-radius: 8px;
       background: var(--bg-surface);
       color: var(--text-main);
       cursor: pointer;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       transition: all 0.2s ease;
     }
@@ -304,21 +299,27 @@
       border-color: var(--gold-light);
       background: #25201c;
       color: var(--gold-light);
+      box-shadow: 0 0 14px rgba(217, 119, 6, 0.25);
     }
 
     .swatch {
-      width: 14px;
-      height: 14px;
+      width: 18px;
+      height: 18px;
       border-radius: 50%;
       flex-shrink: 0;
     }
 
-    .swatch-black { background: #141414; border: 1px solid #444; }
-    .swatch-grey { background: #888480; }
-    .swatch-coral { background: #b45309; }
-    .swatch-bronze { background: #927042; }
+    .swatch-black { 
+      background: #141414; 
+      border: 1px solid #555; 
+    }
+    
+    .swatch-bronze { 
+      background: linear-gradient(135deg, #d4af37 45%, #0d9488 45%); 
+      border: 1px solid #78581e;
+    }
 
-    /* Specification Table */
+    /* Details Table */
     .details-table {
       width: 100%;
       border-collapse: collapse;
@@ -407,7 +408,7 @@
       margin-top: 18px;
       padding-top: 16px;
       border-top: 1px solid var(--border);
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 800;
       color: #fff;
     }
@@ -463,9 +464,6 @@
       .gallery-container {
         position: static;
       }
-      .variant-grid {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -482,7 +480,7 @@
       <span>💀</span>
       <span>MICTLAN REPLICAS</span>
     </div>
-    <a href="#checkout" class="nav-cta">Claim Yours — €30.00</a>
+    <a href="#checkout" class="nav-cta">Claim Yours — $32.99</a>
   </header>
 
   <main class="container">
@@ -496,34 +494,30 @@
           <img id="mainProductImage" class="product-img" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Aztec Screaming Whistle" />
         </div>
 
-        <!-- Listing Image Thumbnails -->
+        <!-- Two Product Thumbnails -->
         <div class="thumbnails">
-          <div class="thumb active" onclick="switchImage('https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg', this)">
-            <img src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Front skull angle" />
+          <div class="thumb active" id="thumbBlack" onclick="selectVariant('Obsidian Black', 'https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg', this)">
+            <img src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Obsidian Black" />
           </div>
-          <div class="thumb" onclick="switchImage('https://img.kwcdn.com/product/fancy/6b55eaf2-dc01-47a2-b70d-6abce14d6b79.jpg', this)">
-            <img src="https://img.kwcdn.com/product/fancy/6b55eaf2-dc01-47a2-b70d-6abce14d6b79.jpg" alt="Side profile" />
-          </div>
-          <div class="thumb" onclick="switchImage('https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg', this)">
-            <img src="https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg" alt="Detail finish" />
+          <div class="thumb" id="thumbBronze" onclick="selectVariant('Relic Bronze', 'bronze.jpg', this)">
+            <img src="bronze.jpg" onerror="this.src='https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg'" alt="Relic Bronze" />
           </div>
         </div>
 
-        <!-- Audio Player with MP3 Slot & WebAudio Synthesizer Fallback -->
+        <!-- Audio Player -->
         <div class="audio-tester">
           <div>
             <div style="font-weight: 700; font-size: 0.95rem;">Test The Screaming Whistle</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Simulated acoustic chamber reaction</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Acoustic chamber death shriek simulator</div>
           </div>
           <button class="play-scream-btn" id="soundBtn">
             <span>🔊</span> Play Audio
           </button>
         </div>
-        <!-- Hidden MP3 slot ready for your custom audio file -->
         <audio id="customAudio" src="death-whistle.mp3" preload="none"></audio>
       </div>
 
-      <!-- Info & Variant Selector Column -->
+      <!-- Info Column -->
       <div class="hero-info">
         <div class="rating">
           ★★★★★ <span style="color: var(--text-muted); margin-left: 4px;">4.9/5 (1,840+ verified ratings)</span>
@@ -531,29 +525,28 @@
         <h1>Handcrafted Aztec Screaming Whistle Replica</h1>
         
         <div class="price-box">
-          <span class="current-price">€30.00</span>
-          <span class="usd-approx">(~$33.00 USD)</span>
-          <span class="old-price">€60.00</span>
+          <span class="current-price">$32.99</span>
+          <span class="old-price">$65.99</span>
           <span class="discount-tag">50% OFF</span>
         </div>
 
         <p class="hero-desc">
-          An authentic retro replica of the historic Mesoamerican skull whistle. Crafted using high-density acoustic resin, it channels air through dual resonance chambers to recreate the bone-chilling shriek of a human scream. Perfect for collectors, horror fans, camping pranks, and ceremonial display.
+          Crafted using dense acoustic resin, this replica produces the piercing 125+ dB shriek of human agony used in ancient Aztec psychological warfare. Available in classic Obsidian Black and weathered Relic Bronze with natural turquoise verdigris patina.
         </p>
 
-        <!-- Product Specs from listing -->
+        <!-- Product Specs -->
         <table class="details-table">
           <tr>
             <td>Material</td>
-            <td><strong>High-Grade Acoustic Resin</strong></td>
+            <td><strong>High-Grade Acoustic Resonance Resin</strong></td>
           </tr>
           <tr>
             <td>Sound Intensity</td>
             <td><strong>125+ Decibels (Human Scream)</strong></td>
           </tr>
           <tr>
-            <td>Product Use</td>
-            <td><strong>Acoustic Instrument / Collector Display</strong></td>
+            <td>Primary Uses</td>
+            <td><strong>Ritual Replica / Pranks / Collector Display</strong></td>
           </tr>
           <tr>
             <td>Worldwide Shipping</td>
@@ -561,21 +554,15 @@
           </tr>
         </table>
 
-        <!-- Color Variants -->
+        <!-- 2 Color Variant Options -->
         <div class="variant-section">
-          <span class="variant-label">Select Color Finish: <strong id="selectedColorName" style="color: var(--gold-light);">Black</strong></span>
+          <span class="variant-label">Select Finish: <strong id="selectedColorName" style="color: var(--gold-light);">Obsidian Black</strong></span>
           <div class="variant-grid">
-            <button class="variant-btn active" data-color="Black" data-img="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg">
+            <button class="variant-btn active" id="btnBlack" onclick="selectVariant('Obsidian Black', 'https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg', document.getElementById('thumbBlack'))">
               <span class="swatch swatch-black"></span> Obsidian Black
             </button>
-            <button class="variant-btn" data-color="Grey" data-img="https://img.kwcdn.com/product/fancy/6b55eaf2-dc01-47a2-b70d-6abce14d6b79.jpg">
-              <span class="swatch swatch-grey"></span> Weathered Grey
-            </button>
-            <button class="variant-btn" data-color="Coral" data-img="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg">
-              <span class="swatch swatch-coral"></span> Coral Terracotta
-            </button>
-            <button class="variant-btn" data-color="Bronze" data-img="https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg">
-              <span class="swatch swatch-bronze"></span> Antique Bronze
+            <button class="variant-btn" id="btnBronze" onclick="selectVariant('Relic Bronze', 'bronze.jpg', document.getElementById('thumbBronze'))">
+              <span class="swatch swatch-bronze"></span> Relic Bronze
             </button>
           </div>
         </div>
@@ -594,31 +581,30 @@
       </div>
 
       <div class="checkout-grid">
-        <!-- Shipping & Customer Details -->
+        <!-- Shipping Form -->
         <div class="checkout-card">
           <h3 style="margin-bottom: 20px; font-size: 1.25rem;">1. Shipping & Destination</h3>
           <form id="orderForm" onsubmit="handleOrder(event)">
             
-            <!-- Country Selector -->
+            <!-- Worldwide Country Selector -->
             <div class="form-group">
-              <label for="country">Country / Region (Worldwide Shipping)</label>
+              <label for="country">Country / Region (Worldwide Delivery)</label>
               <select id="country" class="form-control" required>
                 <option value="" disabled selected>Select your country</option>
                 <optgroup label="Popular Destinations">
-                  <option value="LT">Lithuania (Lietuva)</option>
                   <option value="US">United States</option>
+                  <option value="LT">Lithuania (Lietuva)</option>
                   <option value="GB">United Kingdom</option>
-                  <option value="DE">Germany (Deutschland)</option>
-                  <option value="FR">France</option>
                   <option value="CA">Canada</option>
                   <option value="AU">Australia</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
                 </optgroup>
-                <optgroup label="European Union">
+                <optgroup label="European Countries">
                   <option value="AT">Austria</option>
                   <option value="BE">Belgium</option>
                   <option value="BG">Bulgaria</option>
                   <option value="HR">Croatia</option>
-                  <option value="CY">Cyprus</option>
                   <option value="CZ">Czech Republic</option>
                   <option value="DK">Denmark</option>
                   <option value="EE">Estonia</option>
@@ -628,26 +614,21 @@
                   <option value="IE">Ireland</option>
                   <option value="IT">Italy</option>
                   <option value="LV">Latvia</option>
-                  <option value="LU">Luxembourg</option>
-                  <option value="MT">Malta</option>
                   <option value="NL">Netherlands</option>
+                  <option value="NO">Norway</option>
                   <option value="PL">Poland</option>
                   <option value="PT">Portugal</option>
                   <option value="RO">Romania</option>
-                  <option value="SK">Slovakia</option>
-                  <option value="SI">Slovenia</option>
                   <option value="ES">Spain</option>
                   <option value="SE">Sweden</option>
+                  <option value="CH">Switzerland</option>
                 </optgroup>
                 <optgroup label="Rest of the World">
                   <option value="BR">Brazil</option>
-                  <option value="CL">Chile</option>
                   <option value="JP">Japan</option>
                   <option value="KR">South Korea</option>
                   <option value="MX">Mexico</option>
                   <option value="NZ">New Zealand</option>
-                  <option value="NO">Norway</option>
-                  <option value="CH">Switzerland</option>
                   <option value="SG">Singapore</option>
                   <option value="AE">United Arab Emirates</option>
                   <option value="OTHER">Other Countries (Worldwide)</option>
@@ -673,7 +654,7 @@
 
             <div class="form-group">
               <label>Street Address</label>
-              <input type="text" class="form-control" required placeholder="Apartment, suite, street name" />
+              <input type="text" class="form-control" required placeholder="Street address, apartment, suite" />
             </div>
 
             <div class="form-row">
@@ -683,7 +664,7 @@
               </div>
               <div class="form-group">
                 <label>Postal / ZIP Code</label>
-                <input type="text" class="form-control" required placeholder="Postal Code" />
+                <input type="text" class="form-control" required placeholder="ZIP Code" />
               </div>
             </div>
 
@@ -705,7 +686,7 @@
             </div>
 
             <button type="submit" class="btn-submit">
-              COMPLETE PURCHASE — €30.00
+              COMPLETE PURCHASE — $32.99
             </button>
           </form>
         </div>
@@ -716,7 +697,7 @@
           <div style="display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
             <img id="summaryThumb" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" style="width: 72px; height: 72px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border);" alt="Cart Thumbnail">
             <div>
-              <div style="font-weight: 700;">Handcrafted Aztec Screaming Whistle</div>
+              <div style="font-weight: 700;">Aztec Screaming Whistle</div>
               <div style="font-size: 0.85rem; color: var(--gold-light);" id="summaryVariant">Color: Obsidian Black</div>
               <div style="font-size: 0.85rem; color: var(--text-muted);">Quantity: 1</div>
             </div>
@@ -724,11 +705,11 @@
 
           <div class="order-summary-item">
             <span>List Price</span>
-            <span>€60.00</span>
+            <span>$65.99</span>
           </div>
           <div class="order-summary-item" style="color: #4ade80;">
             <span>Flash Promotional Discount</span>
-            <span>-€30.00</span>
+            <span>-$33.00</span>
           </div>
           <div class="order-summary-item">
             <span>Tracked Worldwide Shipping</span>
@@ -737,10 +718,7 @@
 
           <div class="order-summary-total">
             <span>Total Payable</span>
-            <div style="text-align: right;">
-              <div>€30.00</div>
-              <div style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">(~$33.00 USD)</div>
-            </div>
+            <span>$32.99</span>
           </div>
 
           <div style="margin-top: 24px; padding: 14px; background: #0c0b0a; border-radius: 8px; border: 1px dashed var(--border); font-size: 0.82rem; color: var(--text-muted);">
@@ -751,69 +729,53 @@
     </section>
   </main>
 
-  <!-- Modal -->
+  <!-- Success Modal -->
   <div class="success-modal" id="modal">
     <div class="success-box">
       <span style="font-size: 3rem;">💀</span>
       <h2 style="margin: 16px 0 8px; color: var(--gold-light);">ORDER PLACED!</h2>
       <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;" id="modalMessage">
-        Your Aztec Screaming Death Whistle is being dispatched. A tracking link will be sent to your email.
+        Your Aztec Screaming Death Whistle is being prepared. Tracking details will be dispatched to your email.
       </p>
       <button class="nav-cta" style="border:none; cursor:pointer;" onclick="closeModal()">Close</button>
     </div>
   </div>
 
   <script>
-    // Gallery Switcher
-    function switchImage(src, element) {
-      document.getElementById('mainProductImage').src = src;
+    // Variant Selection Logic (Black vs Bronze)
+    function selectVariant(colorName, imgSrc, thumbElement) {
+      document.getElementById('selectedColorName').textContent = colorName;
+      document.getElementById('summaryVariant').textContent = `Color: ${colorName}`;
+      
+      const mainImg = document.getElementById('mainProductImage');
+      const summaryImg = document.getElementById('summaryThumb');
+      mainImg.src = imgSrc;
+      summaryImg.src = imgSrc;
+
+      // Update button active state
+      document.getElementById('btnBlack').classList.toggle('active', colorName === 'Obsidian Black');
+      document.getElementById('btnBronze').classList.toggle('active', colorName === 'Relic Bronze');
+
+      // Update thumbnail active state
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-      if (element) element.classList.add('active');
+      if (thumbElement) thumbElement.classList.add('active');
     }
 
-    // Variant Selection
-    const variantButtons = document.querySelectorAll('.variant-btn');
-    const selectedColorName = document.getElementById('selectedColorName');
-    const summaryVariant = document.getElementById('summaryVariant');
-    const summaryThumb = document.getElementById('summaryThumb');
-
-    variantButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        variantButtons.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        
-        const color = btn.getAttribute('data-color');
-        const img = btn.getAttribute('data-img');
-        
-        selectedColorName.textContent = color;
-        summaryVariant.textContent = `Color: ${color}`;
-        
-        // Update main image and cart thumbnail to match selection
-        if (img) {
-          document.getElementById('mainProductImage').src = img;
-          summaryThumb.src = img;
-        }
-      });
-    });
-
-    // Audio Player (Tries your custom MP3 first, falls back to Web Audio acoustic synthesizer)
+    // Audio Player (Plays death-whistle.mp3 if found, else uses Web Audio synthesizer)
     const soundBtn = document.getElementById('soundBtn');
     const customAudio = document.getElementById('customAudio');
 
     soundBtn.addEventListener('click', () => {
-      // 1. Try playing custom MP3 if present
       const playPromise = customAudio.play();
-
       if (playPromise !== undefined) {
         playPromise
           .then(() => {
-            soundBtn.textContent = '🔊 Playing MP3...';
+            soundBtn.textContent = '🔊 Playing Audio...';
             customAudio.onended = () => {
               soundBtn.innerHTML = '<span>🔊</span> Play Audio';
             };
           })
           .catch(() => {
-            // 2. Fallback to Web Audio API whistle screech synthesis
             synthesizeWhistleSound();
           });
       } else {
@@ -829,7 +791,6 @@
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
 
-        // Brown/pink modulated turbulence
         for (let i = 0; i < bufferSize; i++) {
           data[i] = Math.random() * 2 - 1;
         }
@@ -837,7 +798,6 @@
         const noise = ctx.createBufferSource();
         noise.buffer = buffer;
 
-        // Dual bandpass filter resembling an acoustic skull chamber
         const filter = ctx.createBiquadFilter();
         filter.type = 'bandpass';
         filter.frequency.setValueAtTime(1200, ctx.currentTime);
@@ -855,7 +815,7 @@
         gain.connect(ctx.destination);
 
         noise.start();
-        soundBtn.textContent = '🔊 Screaming...';
+        soundBtn.textContent = '🔊 Shrieking...';
         setTimeout(() => {
           soundBtn.innerHTML = '<span>🔊</span> Play Audio';
         }, 2400);
@@ -864,7 +824,7 @@
       }
     }
 
-    // Checkout Form Submission
+    // Checkout Handling
     function handleOrder(e) {
       e.preventDefault();
       const countrySelect = document.getElementById('country');
