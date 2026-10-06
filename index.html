@@ -63,19 +63,25 @@
       letter-spacing: 0.04em;
     }
 
-    /* Navigation */
+    /* Navigation with dynamic scroll elevation */
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 16px 8%;
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 9, 8, 0.92);
-      backdrop-filter: blur(12px);
+      background: rgba(10, 9, 8, 0.88);
+      backdrop-filter: blur(14px);
       position: sticky;
       top: 0;
       z-index: 100;
-      transition: padding 0.3s var(--ease-snappy);
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, padding 0.3s var(--ease-snappy);
+    }
+
+    header.header-scrolled {
+      background: rgba(8, 7, 6, 0.96);
+      border-bottom-color: rgba(217, 119, 6, 0.35);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
     .logo {
@@ -87,6 +93,11 @@
       color: var(--gold-light);
       text-decoration: none;
       letter-spacing: 0.05em;
+      transition: transform 0.2s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
     }
 
     /* 3D Navigation Button */
@@ -139,6 +150,18 @@
       top: 96px;
     }
 
+    /* Atmospheric breathing glow behind product */
+    @keyframes auraPulse {
+      0%, 100% {
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(220, 38, 38, 0.15);
+        border-color: var(--border);
+      }
+      50% {
+        box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 45px rgba(217, 119, 6, 0.25);
+        border-color: rgba(217, 119, 6, 0.5);
+      }
+    }
+
     .main-image-box {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -149,13 +172,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-      transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .main-image-box:hover {
-      border-color: rgba(217, 119, 6, 0.5);
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      animation: auraPulse 6s infinite ease-in-out;
+      transition: transform 0.4s var(--ease-snappy);
     }
 
     .product-img {
@@ -166,7 +184,7 @@
     }
 
     .main-image-box:hover .product-img {
-      transform: scale(1.03);
+      transform: scale(1.04);
     }
 
     /* Audio Player Widget */
@@ -185,7 +203,7 @@
     }
 
     .audio-tester:hover {
-      border-color: rgba(217, 119, 6, 0.4);
+      border-color: rgba(217, 119, 6, 0.45);
     }
 
     /* 3D Audio Button */
@@ -303,8 +321,10 @@
       width: 42%;
     }
 
-    /* Primary 3D Checkout Button */
+    /* Primary 3D Checkout Button with Shimmer Highlight */
     .btn-submit {
+      position: relative;
+      overflow: hidden;
       display: block;
       width: 100%;
       background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
@@ -321,14 +341,37 @@
       text-align: center;
       text-decoration: none;
       box-shadow: 0 6px 0 var(--accent-shadow), 0 14px 24px rgba(220, 38, 38, 0.4);
-      transition: all 0.15s var(--ease-snappy);
+      transition: transform 0.15s var(--ease-snappy), box-shadow 0.15s var(--ease-snappy), filter 0.15s ease;
       user-select: none;
+    }
+
+    .btn-submit::after {
+      content: '';
+      position: absolute;
+      top: -60%;
+      left: -80%;
+      width: 60%;
+      height: 220%;
+      background: linear-gradient(
+        60deg,
+        rgba(255, 255, 255, 0) 20%,
+        rgba(255, 255, 255, 0.3) 50%,
+        rgba(255, 255, 255, 0) 80%
+      );
+      transform: rotate(25deg);
+      animation: btnShimmer 4.5s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes btnShimmer {
+      0% { transform: translateX(-150%) rotate(25deg); }
+      30%, 100% { transform: translateX(380%) rotate(25deg); }
     }
 
     .btn-submit:hover {
       transform: translateY(-2px);
       box-shadow: 0 8px 0 var(--accent-shadow), 0 18px 30px rgba(220, 38, 38, 0.55);
-      filter: brightness(1.04);
+      filter: brightness(1.05);
     }
 
     .btn-submit:active {
@@ -342,6 +385,26 @@
       transform: translateY(2px);
       box-shadow: 0 4px 0 var(--accent-shadow);
     }
+
+    /* ========================================================
+       SCROLL-TRIGGERED FADE-IN REVEAL SYSTEM
+    ======================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(34px);
+      transition: opacity 0.8s var(--ease-snappy), transform 0.8s var(--ease-snappy);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Staggered delay helpers */
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
 
     /* Divider */
     .section-divider {
@@ -383,20 +446,25 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 30px 24px;
-      transition: transform 0.25s var(--ease-snappy), border-color 0.25s ease, box-shadow 0.25s ease;
+      transition: transform 0.3s var(--ease-snappy), border-color 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .feature-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(217, 119, 6, 0.6);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transform: translateY(-6px);
+      border-color: rgba(217, 119, 6, 0.65);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.55);
     }
 
     .feature-icon {
       font-size: 2.2rem;
       margin-bottom: 16px;
       display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.12) rotate(-3deg);
     }
 
     .feature-card h3 {
@@ -459,13 +527,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.25s var(--ease-snappy), border-color 0.25s ease;
+      transition: transform 0.3s var(--ease-snappy), border-color 0.3s ease, box-shadow 0.3s ease;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
 
     .review-card:hover {
-      transform: translateY(-3px);
-      border-color: #3f3732;
+      transform: translateY(-5px);
+      border-color: rgba(217, 119, 6, 0.4);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.4);
     }
 
     .review-stars {
@@ -524,11 +593,12 @@
       border-radius: var(--radius);
       margin-bottom: 14px;
       overflow: hidden;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
     }
 
     .faq-item:hover {
       border-color: #443a34;
+      transform: translateX(4px);
     }
 
     .faq-question {
@@ -581,7 +651,7 @@
       padding: 45px 30px;
       text-align: center;
       margin-bottom: 80px;
-      box-shadow: 0 8px 35px rgba(217, 119, 6, 0.16);
+      box-shadow: 0 8px 35px rgba(217, 119, 6, 0.18);
     }
 
     .bottom-cta-banner h2 {
@@ -629,9 +699,20 @@
       gap: 6px;
     }
 
-    /* ========================================================
-       PHONE & MOBILE-SPECIFIC REFINEMENTS
-    ======================================================== */
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+      .btn-submit::after,
+      .main-image-box {
+        animation: none !important;
+      }
+    }
+
+    /* Mobile Refinements */
     @media (max-width: 860px) {
       header {
         padding: 12px 16px;
@@ -680,6 +761,10 @@
 
       .section-divider {
         margin: 30px 0 50px;
+      }
+
+      .faq-item:hover {
+        transform: none;
       }
 
       .faq-question {
@@ -752,7 +837,7 @@
     <section class="hero">
       
       <!-- Gallery Column -->
-      <div class="gallery-container">
+      <div class="gallery-container reveal">
         <div class="main-image-box">
           <img id="mainProductImage" class="product-img" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Aztec Screaming Whistle in Obsidian Black" />
         </div>
@@ -776,7 +861,7 @@
       </div>
 
       <!-- Info Column -->
-      <div class="hero-info">
+      <div class="hero-info reveal reveal-delay-1">
         <div class="rating">
           ★★★★★ <span style="color: var(--text-muted); margin-left: 4px;">4.9/5 (1,840+ verified ratings)</span>
         </div>
@@ -827,25 +912,25 @@
          FEATURES & ACOUSTIC LORE
     ========================================== -->
     <section>
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Historical Engineering</span>
         <h2 class="section-title">The Anatomy of an Ancient Scream</h2>
       </div>
 
       <div class="feature-grid">
-        <div class="feature-card">
+        <div class="feature-card reveal reveal-delay-1">
           <span class="feature-icon">🌪️</span>
           <h3>Dual-Airflow Collision</h3>
           <p>Unlike ordinary whistles, the internal geometry splits your breath into opposing air streams that violently collide within a hollow skull chamber, producing a piercing, chaotic human shriek.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card reveal reveal-delay-2">
           <span class="feature-icon">🔊</span>
           <h3>125+ Decibel Shockwave</h3>
           <p>Acoustically tuned to reach the frequency range human ears are instinctively hardwired to fear. Easily echoes through woods, canyons, and across open campgrounds.</p>
         </div>
 
-        <div class="feature-card">
+        <div class="feature-card reveal reveal-delay-3">
           <span class="feature-icon">🏺</span>
           <h3>Hand-Finished Resin</h3>
           <p>Cast from high-density, shock-resistant resin that won't crack or chip like brittle terracotta pottery, while preserving the textured surface of authentic excavated relics.</p>
@@ -857,12 +942,12 @@
          CUSTOMER REVIEWS SECTION
     ========================================== -->
     <section>
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Social Proof</span>
         <h2 class="section-title">Tested by Skeptics & Collectors</h2>
       </div>
 
-      <div class="reviews-summary">
+      <div class="reviews-summary reveal">
         <div class="summary-metric">
           <div class="val">4.9 / 5</div>
           <div class="lbl">Average Rating</div>
@@ -878,7 +963,7 @@
       </div>
 
       <div class="reviews-grid">
-        <div class="review-card">
+        <div class="review-card reveal reveal-delay-1">
           <div>
             <div class="review-stars">★★★★★</div>
             <div class="review-title">"Terrified our whole camping site"</div>
@@ -890,7 +975,7 @@
           </div>
         </div>
 
-        <div class="review-card">
+        <div class="review-card reveal reveal-delay-2">
           <div>
             <div class="review-stars">★★★★★</div>
             <div class="review-title">"Insanely loud and detailed"</div>
@@ -902,7 +987,7 @@
           </div>
         </div>
 
-        <div class="review-card">
+        <div class="review-card reveal reveal-delay-3">
           <div>
             <div class="review-stars">★★★★★</div>
             <div class="review-title">"Halloween was undefeated"</div>
@@ -920,13 +1005,13 @@
          FREQUENTLY ASKED QUESTIONS (FAQ)
     ========================================== -->
     <section>
-      <div class="section-header">
+      <div class="section-header reveal">
         <span class="section-tag">Got Questions?</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
       </div>
 
       <div class="faq-container">
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <div class="faq-question">
             <span>How loud is the death whistle in real life?</span>
             <span class="faq-icon">+</span>
@@ -936,7 +1021,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal reveal-delay-1">
           <div class="faq-question">
             <span>Is there a specific technique required to make it scream?</span>
             <span class="faq-icon">+</span>
@@ -946,7 +1031,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal reveal-delay-2">
           <div class="faq-question">
             <span>Where do you ship, and how fast is delivery?</span>
             <span class="faq-icon">+</span>
@@ -956,7 +1041,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal reveal-delay-3">
           <div class="faq-question">
             <span>What happens if I drop it? Will it shatter?</span>
             <span class="faq-icon">+</span>
@@ -966,7 +1051,7 @@
           </div>
         </div>
 
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <div class="faq-question">
             <span>What is your return guarantee?</span>
             <span class="faq-icon">+</span>
@@ -981,7 +1066,7 @@
     <!-- ==========================================
          BOTTOM FINAL CTA BANNER
     ========================================== -->
-    <div class="bottom-cta-banner">
+    <div class="bottom-cta-banner reveal">
       <h2>Unleash The Underworld</h2>
       <p>Limited batch remaining. Handcrafted, acoustically calibrated, and backed by our 30-day money-back guarantee.</p>
       <div class="bottom-cta-btn-wrapper">
@@ -1005,16 +1090,38 @@
   </footer>
 
   <script>
+    // Scroll Reveal Intersection Observer
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Dynamic Header Glass on Scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 25) {
+        header.classList.add('header-scrolled');
+      } else {
+        header.classList.remove('header-scrolled');
+      }
+    }, { passive: true });
+
     // FAQ Accordion Interaction
     document.querySelectorAll('.faq-question').forEach(header => {
       header.addEventListener('click', () => {
         const item = header.parentElement;
         const isActive = item.classList.contains('active');
         
-        // Close other open FAQs
         document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-        
-        // Toggle selected FAQ
         if (!isActive) item.classList.add('active');
       });
     });
@@ -1092,7 +1199,7 @@
       }
     }
 
-    // Shopify Storefront API → creates a cart and sends the customer to Shopify Checkout.
+    // Shopify Storefront API
     const SHOPIFY_DOMAIN = '0p8ajm-u6.myshopify.com';
     const SHOPIFY_STOREFRONT_TOKEN = 'a1714bd31d31166f471adc488c179cc4';
     const SHOPIFY_PRODUCT_ID = 'gid://shopify/Product/11215861088593';
