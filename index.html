@@ -168,7 +168,6 @@
       color: #000;
     }
 
-    /* Blood-red pulsing effect while the whistle screams */
     @keyframes pulseScream {
       0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); transform: scale(1); }
       50% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); transform: scale(1.03); }
@@ -384,7 +383,7 @@
 
   <!-- Top Announcement Bar -->
   <div class="top-bar">
-    ⚡ FLASH PROMOTION: 50% OFF TODAY ONLY • FREE WORLDWIDE TRACKED SHIPPING
+    ⚡ LIMITED BATCH: 50% OFF TODAY • TRACKED SHIPPING TO US, UK & EU
   </div>
 
   <!-- Header -->
@@ -460,12 +459,11 @@
             <td><strong>Ritual Replica / Pranks / Collector Display</strong></td>
           </tr>
           <tr>
-            <td>Shipping</td>
-            <td><strong>Free Tracked Express Delivery</strong></td>
+            <td>Shipping Regions</td>
+            <td><strong>United States, United Kingdom & European Union</strong></td>
           </tr>
         </table>
 
-        <!-- Direct Checkout CTA -->
         <a href="#checkout" style="display:block; text-align:center; text-decoration:none;" class="btn-submit">
           PROCEED TO CHECKOUT
         </a>
@@ -485,51 +483,43 @@
           <h3 style="margin-bottom: 20px; font-size: 1.25rem;">1. Shipping & Destination</h3>
           <form id="orderForm" onsubmit="handleOrder(event)">
             
+            <!-- Filtered Country Selector: US, UK & EU Only -->
             <div class="form-group">
-              <label for="country">Country / Region (Worldwide Delivery)</label>
+              <label for="country">Country / Region (US, UK & EU Only)</label>
               <select id="country" class="form-control" required>
                 <option value="" disabled selected>Select your country</option>
-                <optgroup label="Popular Destinations">
+                <optgroup label="United States & United Kingdom">
                   <option value="US">United States</option>
-                  <option value="LT">Lithuania (Lietuva)</option>
                   <option value="GB">United Kingdom</option>
-                  <option value="CA">Canada</option>
-                  <option value="AU">Australia</option>
-                  <option value="DE">Germany</option>
-                  <option value="FR">France</option>
                 </optgroup>
-                <optgroup label="European Countries">
+                <optgroup label="European Union (EU)">
                   <option value="AT">Austria</option>
                   <option value="BE">Belgium</option>
                   <option value="BG">Bulgaria</option>
                   <option value="HR">Croatia</option>
+                  <option value="CY">Cyprus</option>
                   <option value="CZ">Czech Republic</option>
                   <option value="DK">Denmark</option>
                   <option value="EE">Estonia</option>
                   <option value="FI">Finland</option>
+                  <option value="FR">France</option>
+                  <option value="DE">Germany</option>
                   <option value="GR">Greece</option>
                   <option value="HU">Hungary</option>
                   <option value="IE">Ireland</option>
                   <option value="IT">Italy</option>
                   <option value="LV">Latvia</option>
+                  <option value="LT">Lithuania (Lietuva)</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MT">Malta</option>
                   <option value="NL">Netherlands</option>
-                  <option value="NO">Norway</option>
                   <option value="PL">Poland</option>
                   <option value="PT">Portugal</option>
                   <option value="RO">Romania</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
                   <option value="ES">Spain</option>
                   <option value="SE">Sweden</option>
-                  <option value="CH">Switzerland</option>
-                </optgroup>
-                <optgroup label="Rest of the World">
-                  <option value="BR">Brazil</option>
-                  <option value="JP">Japan</option>
-                  <option value="KR">South Korea</option>
-                  <option value="MX">Mexico</option>
-                  <option value="NZ">New Zealand</option>
-                  <option value="SG">Singapore</option>
-                  <option value="AE">United Arab Emirates</option>
-                  <option value="OTHER">Other Countries</option>
                 </optgroup>
               </select>
             </div>
@@ -584,7 +574,7 @@
             </div>
 
             <button type="submit" class="btn-submit">
-              COMPLETE PURCHASE — $32.99
+              COMPLETE PURCHASE — $37.98
             </button>
           </form>
         </div>
@@ -606,21 +596,21 @@
             <span>$65.99</span>
           </div>
           <div class="order-summary-item" style="color: #4ade80;">
-            <span>Flash Promotional Discount</span>
+            <span>Promotional Discount</span>
             <span>-$33.00</span>
           </div>
           <div class="order-summary-item">
-            <span>Tracked Shipping</span>
-            <span style="color: #4ade80;">FREE</span>
+            <span>Tracked Shipping (US, UK & EU)</span>
+            <span style="color: #fff;">$4.99</span>
           </div>
 
           <div class="order-summary-total">
             <span>Total Payable</span>
-            <span>$32.99</span>
+            <span>$37.98</span>
           </div>
 
           <div style="margin-top: 24px; padding: 14px; background: #0c0b0a; border-radius: 8px; border: 1px dashed var(--border); font-size: 0.82rem; color: var(--text-muted);">
-            🛡️ <strong>Risk-Free Guarantee:</strong> All orders are dispatched with full tracking. Includes our 30-day "Deadly Scream" money-back guarantee.
+            🛡️ <strong>Risk-Free Guarantee:</strong> Includes our 30-day "Deadly Scream" return guarantee. Every parcel is dispatched with an end-to-end tracking code.
           </div>
         </div>
       </div>
@@ -640,7 +630,7 @@
   </div>
 
   <script>
-    // Audio Player with scream.mp3 playback & visual pulse
+    // Audio Player
     const soundBtn = document.getElementById('soundBtn');
     const whistleAudio = document.getElementById('whistleAudio');
 
@@ -656,7 +646,6 @@
               soundBtn.classList.add('playing');
             })
             .catch(() => {
-              // Synthetic fallback if file path hasn't been saved yet
               synthesizeWhistleSound();
             });
         } else {
@@ -670,13 +659,11 @@
       }
     });
 
-    // Reset button once audio finishes playing
     whistleAudio.addEventListener('ended', () => {
       soundBtn.innerHTML = '<span>🔊</span> Hear The Scream';
       soundBtn.classList.remove('playing');
     });
 
-    // Fail-safe acoustic synthesizer
     function synthesizeWhistleSound() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -727,7 +714,7 @@
       const countryName = countrySelect.options[countrySelect.selectedIndex].text;
       
       document.getElementById('modalMessage').textContent = 
-        `Your Aztec Screaming Death Whistle is being prepared for dispatch to ${countryName}. A tracking number will be sent to your email.`;
+        `Your Aztec Screaming Death Whistle is being prepared for shipment to ${countryName}. A tracking number will be sent to your email.`;
       
       document.getElementById('modal').style.display = 'flex';
     }
