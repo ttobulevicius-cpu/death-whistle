@@ -134,10 +134,10 @@
       transition: transform 0.3s ease;
     }
 
-    /* Audio Player */
+    /* Audio Player Widget */
     .audio-tester {
       margin-top: 18px;
-      padding: 16px;
+      padding: 18px;
       border-radius: var(--radius);
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -151,13 +151,14 @@
       background: #27211e;
       border: 1px solid var(--gold);
       color: var(--gold-light);
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
       font-weight: 700;
+      font-size: 0.95rem;
       white-space: nowrap;
       transition: all 0.2s;
     }
@@ -165,6 +166,20 @@
     .play-scream-btn:hover {
       background: var(--gold);
       color: #000;
+    }
+
+    /* Blood-red pulsing effect while the whistle screams */
+    @keyframes pulseScream {
+      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); transform: scale(1); }
+      50% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); transform: scale(1.03); }
+      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); transform: scale(1); }
+    }
+
+    .play-scream-btn.playing {
+      background: var(--accent) !important;
+      color: #ffffff !important;
+      border-color: #f87171 !important;
+      animation: pulseScream 1s infinite;
     }
 
     /* Product Details */
@@ -387,22 +402,26 @@
       
       <!-- Gallery Column -->
       <div class="gallery-container">
-        <!-- Main Image Frame -->
         <div class="main-image-box">
           <img id="mainProductImage" class="product-img" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Aztec Screaming Whistle in Obsidian Black" />
         </div>
 
-        <!-- Audio Player -->
+        <!-- Audio Player Widget -->
         <div class="audio-tester">
           <div>
-            <div style="font-weight: 700; font-size: 0.95rem;">Test The Screaming Whistle</div>
-            <div style="font-size: 0.8rem; color: var(--text-muted);">Acoustic chamber death shriek simulator</div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Experience The Terror</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Warning: Authentic screaming acoustic chamber</div>
           </div>
           <button class="play-scream-btn" id="soundBtn">
-            <span>🔊</span> Play Audio
+            <span>🔊</span> Hear The Scream
           </button>
         </div>
-        <audio id="customAudio" src="death-whistle.mp3" preload="none"></audio>
+
+        <!-- Audio element wired to scream.mp3 -->
+        <audio id="whistleAudio" preload="auto">
+          <source src="scream.mp3" type="audio/mpeg">
+          <source src="death-whistle.mp3" type="audio/mpeg">
+        </audio>
       </div>
 
       <!-- Info Column -->
@@ -425,7 +444,7 @@
         <!-- Product Specs -->
         <table class="details-table">
           <tr>
-            <td>Finish</td>
+            <td>Edition</td>
             <td><strong>Obsidian Black</strong></td>
           </tr>
           <tr>
@@ -621,33 +640,48 @@
   </div>
 
   <script>
-    // Audio Player
+    // Audio Player with scream.mp3 playback & visual pulse
     const soundBtn = document.getElementById('soundBtn');
-    const customAudio = document.getElementById('customAudio');
+    const whistleAudio = document.getElementById('whistleAudio');
 
     soundBtn.addEventListener('click', () => {
-      const playPromise = customAudio.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => {
-            soundBtn.textContent = '🔊 Playing Audio...';
-            customAudio.onended = () => {
-              soundBtn.innerHTML = '<span>🔊</span> Play Audio';
-            };
-          })
-          .catch(() => {
-            synthesizeWhistleSound();
-          });
+      if (whistleAudio.paused) {
+        whistleAudio.currentTime = 0;
+        const playPromise = whistleAudio.play();
+
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              soundBtn.innerHTML = '<span>🔊</span> Screaming...';
+              soundBtn.classList.add('playing');
+            })
+            .catch(() => {
+              // Synthetic fallback if file path hasn't been saved yet
+              synthesizeWhistleSound();
+            });
+        } else {
+          synthesizeWhistleSound();
+        }
       } else {
-        synthesizeWhistleSound();
+        whistleAudio.pause();
+        whistleAudio.currentTime = 0;
+        soundBtn.innerHTML = '<span>🔊</span> Hear The Scream';
+        soundBtn.classList.remove('playing');
       }
     });
 
+    // Reset button once audio finishes playing
+    whistleAudio.addEventListener('ended', () => {
+      soundBtn.innerHTML = '<span>🔊</span> Hear The Scream';
+      soundBtn.classList.remove('playing');
+    });
+
+    // Fail-safe acoustic synthesizer
     function synthesizeWhistleSound() {
       try {
         const AudioCtx = window.AudioContext || window.webkitAudioContext;
         const ctx = new AudioCtx();
-        const bufferSize = ctx.sampleRate * 2.4;
+        const bufferSize = ctx.sampleRate * 2.2;
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
 
@@ -660,25 +694,27 @@
 
         const filter = ctx.createBiquadFilter();
         filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(1200, ctx.currentTime);
-        filter.frequency.linearRampToValueAtTime(3100, ctx.currentTime + 0.9);
-        filter.frequency.linearRampToValueAtTime(1000, ctx.currentTime + 2.4);
-        filter.Q.value = 7.0;
+        filter.frequency.setValueAtTime(1400, ctx.currentTime);
+        filter.frequency.linearRampToValueAtTime(3200, ctx.currentTime + 0.8);
+        filter.frequency.linearRampToValueAtTime(1000, ctx.currentTime + 2.2);
+        filter.Q.value = 6.5;
 
         const gain = ctx.createGain();
         gain.gain.setValueAtTime(0.01, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.85, ctx.currentTime + 0.3);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.4);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.2);
 
         noise.connect(filter);
         filter.connect(gain);
         gain.connect(ctx.destination);
 
         noise.start();
-        soundBtn.textContent = '🔊 Shrieking...';
+        soundBtn.innerHTML = '<span>🔊</span> Screaming...';
+        soundBtn.classList.add('playing');
         setTimeout(() => {
-          soundBtn.innerHTML = '<span>🔊</span> Play Audio';
-        }, 2400);
+          soundBtn.innerHTML = '<span>🔊</span> Hear The Scream';
+          soundBtn.classList.remove('playing');
+        }, 2200);
       } catch (e) {
         alert("Audio playback not supported in this browser.");
       }
