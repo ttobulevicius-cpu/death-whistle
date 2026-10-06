@@ -249,83 +249,9 @@
       width: 40%;
     }
 
-    /* Checkout */
-    .checkout-section {
-      padding: 70px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .checkout-title {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .checkout-grid {
-      display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 40px;
-    }
-
-    .checkout-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-    }
-
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-muted);
-    }
-
-    .form-control {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      background: #0b0a09;
-      border: 1px solid var(--border);
-      color: white;
-      font-size: 0.95rem;
-      outline: none;
-    }
-
-    .form-control:focus {
-      border-color: var(--gold-light);
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
-    .order-summary-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 12px;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-    }
-
-    .order-summary-total {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 18px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      font-size: 1.3rem;
-      font-weight: 800;
-      color: #fff;
-    }
-
+    /* Checkout CTA */
     .btn-submit {
+      display: block;
       width: 100%;
       background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
       color: white;
@@ -338,11 +264,18 @@
       margin-top: 24px;
       transition: all 0.2s ease;
       box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
+      text-align: center;
+      text-decoration: none;
     }
 
     .btn-submit:hover {
       opacity: 0.95;
       transform: translateY(-1px);
+    }
+
+    .btn-submit.loading {
+      opacity: 0.7;
+      pointer-events: none;
     }
 
     /* Modal */
@@ -370,7 +303,7 @@
     }
 
     @media (max-width: 900px) {
-      .hero, .checkout-grid {
+      .hero {
         grid-template-columns: 1fr;
       }
       .gallery-container {
@@ -383,7 +316,7 @@
 
   <!-- Top Announcement Bar -->
   <div class="top-bar">
-    ⚡ LIMITED BATCH: 50% OFF TODAY • TRACKED SHIPPING TO US, UK & EU
+    ⚡ LIMITED BATCH: 50% OFF TODAY • FREE TRACKED SHIPPING
   </div>
 
   <!-- Header -->
@@ -392,7 +325,7 @@
       <span>💀</span>
       <span>MICTLAN REPLICAS</span>
     </div>
-    <a href="#checkout" class="nav-cta">Claim Yours — $32.99</a>
+    <a href="#buy" class="nav-cta shopify-checkout-trigger">Claim Yours — $32.99</a>
   </header>
 
   <main class="container">
@@ -458,176 +391,18 @@
             <td>Primary Uses</td>
             <td><strong>Ritual Replica / Pranks / Collector Display</strong></td>
           </tr>
-          <tr>
-            <td>Shipping Regions</td>
-            <td><strong>United States, United Kingdom & European Union</strong></td>
-          </tr>
         </table>
 
-        <a href="#checkout" style="display:block; text-align:center; text-decoration:none;" class="btn-submit">
+        <a href="#" id="buy" class="btn-submit shopify-checkout-trigger">
           PROCEED TO CHECKOUT
         </a>
       </div>
     </section>
 
-    <!-- Checkout Section -->
-    <section class="checkout-section" id="checkout">
-      <div class="checkout-title">
-        <h2>Secure Checkout</h2>
-        <p style="color: var(--text-muted); margin-top: 6px;">Encrypted 256-Bit SSL Checkout • Dispatched within 24 Hours</p>
-      </div>
-
-      <div class="checkout-grid">
-        <!-- Shipping Form -->
-        <div class="checkout-card">
-          <h3 style="margin-bottom: 20px; font-size: 1.25rem;">1. Shipping & Destination</h3>
-          <form id="orderForm" onsubmit="handleOrder(event)">
-            
-            <!-- Filtered Country Selector: US, UK & EU Only -->
-            <div class="form-group">
-              <label for="country">Country / Region (US, UK & EU Only)</label>
-              <select id="country" class="form-control" required>
-                <option value="" disabled selected>Select your country</option>
-                <optgroup label="United States & United Kingdom">
-                  <option value="US">United States</option>
-                  <option value="GB">United Kingdom</option>
-                </optgroup>
-                <optgroup label="European Union (EU)">
-                  <option value="AT">Austria</option>
-                  <option value="BE">Belgium</option>
-                  <option value="BG">Bulgaria</option>
-                  <option value="HR">Croatia</option>
-                  <option value="CY">Cyprus</option>
-                  <option value="CZ">Czech Republic</option>
-                  <option value="DK">Denmark</option>
-                  <option value="EE">Estonia</option>
-                  <option value="FI">Finland</option>
-                  <option value="FR">France</option>
-                  <option value="DE">Germany</option>
-                  <option value="GR">Greece</option>
-                  <option value="HU">Hungary</option>
-                  <option value="IE">Ireland</option>
-                  <option value="IT">Italy</option>
-                  <option value="LV">Latvia</option>
-                  <option value="LT">Lithuania (Lietuva)</option>
-                  <option value="LU">Luxembourg</option>
-                  <option value="MT">Malta</option>
-                  <option value="NL">Netherlands</option>
-                  <option value="PL">Poland</option>
-                  <option value="PT">Portugal</option>
-                  <option value="RO">Romania</option>
-                  <option value="SK">Slovakia</option>
-                  <option value="SI">Slovenia</option>
-                  <option value="ES">Spain</option>
-                  <option value="SE">Sweden</option>
-                </optgroup>
-              </select>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" required placeholder="John" />
-              </div>
-              <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" required placeholder="Doe" />
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" class="form-control" required placeholder="john@example.com" />
-            </div>
-
-            <div class="form-group">
-              <label>Street Address</label>
-              <input type="text" class="form-control" required placeholder="Street address, apartment, suite" />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>City / Town</label>
-                <input type="text" class="form-control" required placeholder="City" />
-              </div>
-              <div class="form-group">
-                <label>Postal / ZIP Code</label>
-                <input type="text" class="form-control" required placeholder="ZIP Code" />
-              </div>
-            </div>
-
-            <h3 style="margin: 28px 0 20px; font-size: 1.25rem;">2. Payment Method</h3>
-            <div class="form-group">
-              <label>Card Number</label>
-              <input type="text" class="form-control" placeholder="•••• •••• •••• ••••" required />
-            </div>
-
-            <div class="form-row">
-              <div class="form-group">
-                <label>Expiry Date</label>
-                <input type="text" class="form-control" placeholder="MM/YY" required />
-              </div>
-              <div class="form-group">
-                <label>Security Code (CVC)</label>
-                <input type="text" class="form-control" placeholder="123" required />
-              </div>
-            </div>
-
-            <button type="submit" class="btn-submit">
-              COMPLETE PURCHASE — $37.98
-            </button>
-          </form>
-        </div>
-
-        <!-- Order Summary -->
-        <div class="checkout-card">
-          <h3 style="margin-bottom: 20px; font-size: 1.25rem;">Order Summary</h3>
-          <div style="display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
-            <img src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" style="width: 72px; height: 72px; border-radius: 8px; object-fit: contain; background: #fff; border: 1px solid var(--border);" alt="Cart Thumbnail">
-            <div>
-              <div style="font-weight: 700;">Aztec Screaming Whistle</div>
-              <div style="font-size: 0.85rem; color: var(--gold-light);">Edition: Obsidian Black</div>
-              <div style="font-size: 0.85rem; color: var(--text-muted);">Quantity: 1</div>
-            </div>
-          </div>
-
-          <div class="order-summary-item">
-            <span>List Price</span>
-            <span>$65.99</span>
-          </div>
-          <div class="order-summary-item" style="color: #4ade80;">
-            <span>Promotional Discount</span>
-            <span>-$33.00</span>
-          </div>
-          <div class="order-summary-item">
-            <span>Tracked Shipping (US, UK & EU)</span>
-            <span style="color: #fff;">$4.99</span>
-          </div>
-
-          <div class="order-summary-total">
-            <span>Total Payable</span>
-            <span>$37.98</span>
-          </div>
-
-          <div style="margin-top: 24px; padding: 14px; background: #0c0b0a; border-radius: 8px; border: 1px dashed var(--border); font-size: 0.82rem; color: var(--text-muted);">
-            🛡️ <strong>Risk-Free Guarantee:</strong> Includes our 30-day "Deadly Scream" return guarantee. Every parcel is dispatched with an end-to-end tracking code.
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Shopify Checkout
+         Shipping address and payment are collected securely by Shopify Checkout. -->
+    <div id="shopify-checkout-status" aria-live="polite" style="text-align:center; color:var(--text-muted); font-size:0.85rem; margin:0 0 50px; min-height:20px;"></div>
   </main>
-
-  <!-- Success Modal -->
-  <div class="success-modal" id="modal">
-    <div class="success-box">
-      <span style="font-size: 3rem;">💀</span>
-      <h2 style="margin: 16px 0 8px; color: var(--gold-light);">ORDER PLACED!</h2>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;" id="modalMessage">
-        Your Aztec Screaming Death Whistle is being prepared. Tracking details will be dispatched to your email.
-      </p>
-      <button class="nav-cta" style="border:none; cursor:pointer;" onclick="closeModal()">Close</button>
-    </div>
-  </div>
 
   <script>
     // Audio Player
@@ -645,9 +420,7 @@
               soundBtn.innerHTML = '<span>🔊</span> Screaming...';
               soundBtn.classList.add('playing');
             })
-            .catch(() => {
-              synthesizeWhistleSound();
-            });
+            .catch(() => synthesizeWhistleSound());
         } else {
           synthesizeWhistleSound();
         }
@@ -672,9 +445,7 @@
         const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
         const data = buffer.getChannelData(0);
 
-        for (let i = 0; i < bufferSize; i++) {
-          data[i] = Math.random() * 2 - 1;
-        }
+        for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
 
         const noise = ctx.createBufferSource();
         noise.buffer = buffer;
@@ -694,8 +465,8 @@
         noise.connect(filter);
         filter.connect(gain);
         gain.connect(ctx.destination);
-
         noise.start();
+
         soundBtn.innerHTML = '<span>🔊</span> Screaming...';
         soundBtn.classList.add('playing');
         setTimeout(() => {
@@ -703,26 +474,119 @@
           soundBtn.classList.remove('playing');
         }, 2200);
       } catch (e) {
-        alert("Audio playback not supported in this browser.");
+        alert('Audio playback not supported in this browser.');
       }
     }
 
-    // Checkout Handling
-    function handleOrder(e) {
-      e.preventDefault();
-      const countrySelect = document.getElementById('country');
-      const countryName = countrySelect.options[countrySelect.selectedIndex].text;
-      
-      document.getElementById('modalMessage').textContent = 
-        `Your Aztec Screaming Death Whistle is being prepared for shipment to ${countryName}. A tracking number will be sent to your email.`;
-      
-      document.getElementById('modal').style.display = 'flex';
+    // Shopify Storefront API → creates a cart and sends the customer to Shopify Checkout.
+    // Shopify collects the customer's shipping address and payment details securely.
+    const SHOPIFY_DOMAIN = '0p8ajm-u6.myshopify.com';
+    const SHOPIFY_STOREFRONT_TOKEN = 'a1714bd31d31166f471adc488c179cc4';
+    const SHOPIFY_PRODUCT_ID = 'gid://shopify/Product/11215861088593';
+    const SHOPIFY_API_VERSION = '2026-10';
+
+    const checkoutTriggers = document.querySelectorAll('.shopify-checkout-trigger');
+    const checkoutStatus = document.getElementById('shopify-checkout-status');
+
+    async function goToShopifyCheckout(event) {
+      event.preventDefault();
+
+      const button = event.currentTarget;
+      button.classList.add('loading');
+      const originalText = button.textContent.trim();
+      button.textContent = 'SECURE CHECKOUT…';
+      checkoutStatus.textContent = 'Connecting to secure Shopify checkout…';
+
+      try {
+        const endpoint = `https://${SHOPIFY_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
+
+        // Get the currently published variant for this product.
+        const productQuery = `
+          query GetProduct($id: ID!) {
+            product(id: $id) {
+              variants(first: 10) {
+                nodes {
+                  id
+                  title
+                  availableForSale
+                }
+              }
+            }
+          }
+        `;
+
+        const productResponse = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': SHOPIFY_STOREFRONT_TOKEN
+          },
+          body: JSON.stringify({
+            query: productQuery,
+            variables: { id: SHOPIFY_PRODUCT_ID }
+          })
+        });
+
+        const productData = await productResponse.json();
+        if (productData.errors?.length) throw new Error(productData.errors[0].message);
+
+        const variants = productData.data?.product?.variants?.nodes || [];
+        const variant = variants.find(v => v.title === 'Obsidian Black' && v.availableForSale) || variants.find(v => v.availableForSale);
+
+        if (!variant) throw new Error('The Obsidian Black variant is currently unavailable.');
+
+        // Create a Shopify cart containing one whistle and get its checkout URL.
+        const cartMutation = `
+          mutation CreateCart($input: CartInput) {
+            cartCreate(input: $input) {
+              cart {
+                checkoutUrl
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }
+        `;
+
+        const cartResponse = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Shopify-Storefront-Access-Token': SHOPIFY_STOREFRONT_TOKEN
+          },
+          body: JSON.stringify({
+            query: cartMutation,
+            variables: {
+              input: {
+                lines: [{ merchandiseId: variant.id, quantity: 1 }]
+              }
+            }
+          })
+        });
+
+        const cartData = await cartResponse.json();
+        if (cartData.errors?.length) throw new Error(cartData.errors[0].message);
+
+        const userErrors = cartData.data?.cartCreate?.userErrors || [];
+        if (userErrors.length) throw new Error(userErrors[0].message);
+
+        const checkoutUrl = cartData.data?.cartCreate?.cart?.checkoutUrl;
+        if (!checkoutUrl) throw new Error('Shopify did not return a checkout URL.');
+
+        window.location.href = checkoutUrl;
+      } catch (error) {
+        console.error('Shopify checkout error:', error);
+        checkoutStatus.textContent = 'Checkout could not be opened. Please try again.';
+        button.classList.remove('loading');
+        button.textContent = originalText;
+      }
     }
 
-    function closeModal() {
-      document.getElementById('modal').style.display = 'none';
-      document.getElementById('orderForm').reset();
-    }
+    checkoutTriggers.forEach(button => {
+      button.addEventListener('click', goToShopifyCheckout);
+    });
   </script>
 </body>
 </html>
