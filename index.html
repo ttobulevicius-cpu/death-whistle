@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>The Aztec Screaming Death Whistle | Handcrafted Horror Replica</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,12 +15,15 @@
       --bg-card: #1c1917;
       --border: #2e2825;
       --accent: #dc2626;
-      --accent-hover: #b91c1c;
+      --accent-hover: #ef4444;
+      --accent-shadow: #7f1d1d;
       --gold: #d97706;
       --gold-light: #fbbf24;
+      --gold-shadow: #78350f;
       --text-main: #f5f5f4;
       --text-muted: #a8a29e;
-      --radius: 12px;
+      --radius: 14px;
+      --ease-snappy: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     * {
@@ -28,6 +31,11 @@
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -35,6 +43,8 @@
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, .brand-font {
@@ -48,9 +58,9 @@
       color: #fff;
       text-align: center;
       padding: 9px 16px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     /* Navigation */
@@ -58,13 +68,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 18px 8%;
+      padding: 16px 8%;
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 9, 8, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(10, 9, 8, 0.92);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: padding 0.3s var(--ease-snappy);
     }
 
     .logo {
@@ -74,23 +85,37 @@
       font-size: 1.25rem;
       font-weight: 900;
       color: var(--gold-light);
+      text-decoration: none;
+      letter-spacing: 0.05em;
     }
 
+    /* 3D Navigation Button */
     .nav-cta {
-      background: var(--accent);
-      color: white;
+      background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+      color: #fff;
       text-decoration: none;
       padding: 10px 22px;
       border-radius: 30px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.2s ease;
-      box-shadow: 0 0 15px rgba(220, 38, 38, 0.35);
+      font-weight: 700;
+      font-size: 0.88rem;
+      border: 1px solid #f87171;
+      border-bottom: 2px solid var(--accent-shadow);
+      box-shadow: 0 4px 0 var(--accent-shadow), 0 8px 16px rgba(220, 38, 38, 0.35);
+      transition: all 0.15s var(--ease-snappy);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .nav-cta:hover {
-      background: var(--accent-hover);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--accent-shadow), 0 12px 20px rgba(220, 38, 38, 0.45);
+      filter: brightness(1.05);
+    }
+
+    .nav-cta:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--accent-shadow), 0 3px 8px rgba(220, 38, 38, 0.25);
     }
 
     .container {
@@ -101,7 +126,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 50px 0 70px;
+      padding: 45px 0 65px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
@@ -111,7 +136,7 @@
     /* Gallery */
     .gallery-container {
       position: sticky;
-      top: 100px;
+      top: 96px;
     }
 
     .main-image-box {
@@ -124,20 +149,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .main-image-box:hover {
+      border-color: rgba(217, 119, 6, 0.5);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
     }
 
     .product-img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s var(--ease-snappy);
+    }
+
+    .main-image-box:hover .product-img {
+      transform: scale(1.03);
     }
 
     /* Audio Player Widget */
     .audio-tester {
       margin-top: 18px;
-      padding: 18px;
+      padding: 16px 20px;
       border-radius: var(--radius);
       background: var(--bg-surface);
       border: 1px solid var(--border);
@@ -145,37 +180,53 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      transition: border-color 0.25s ease;
     }
 
+    .audio-tester:hover {
+      border-color: rgba(217, 119, 6, 0.4);
+    }
+
+    /* 3D Audio Button */
     .play-scream-btn {
-      background: #27211e;
+      background: linear-gradient(180deg, #2c241e 0%, #171310 100%);
       border: 1px solid var(--gold);
+      border-bottom: 2px solid var(--gold-shadow);
       color: var(--gold-light);
       padding: 12px 24px;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
-      display: flex;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 10px;
       font-weight: 700;
       font-size: 0.95rem;
       white-space: nowrap;
-      transition: all 0.2s;
+      box-shadow: 0 4px 0 var(--gold-shadow), 0 8px 16px rgba(0,0,0,0.5);
+      transition: all 0.15s var(--ease-snappy);
     }
 
     .play-scream-btn:hover {
-      background: var(--gold);
-      color: #000;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 var(--gold-shadow), 0 12px 20px rgba(217, 119, 6, 0.25);
+      background: linear-gradient(180deg, #372d25 0%, #1d1814 100%);
+    }
+
+    .play-scream-btn:active {
+      transform: translateY(3px);
+      box-shadow: 0 1px 0 var(--gold-shadow), 0 2px 6px rgba(0,0,0,0.4);
     }
 
     @keyframes pulseScream {
-      0% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7); transform: scale(1); }
-      50% { box-shadow: 0 0 0 14px rgba(220, 38, 38, 0); transform: scale(1.03); }
-      100% { box-shadow: 0 0 0 0 rgba(220, 38, 38, 0); transform: scale(1); }
+      0% { box-shadow: 0 4px 0 var(--accent-shadow), 0 0 0 0 rgba(220, 38, 38, 0.7); }
+      50% { box-shadow: 0 4px 0 var(--accent-shadow), 0 0 0 14px rgba(220, 38, 38, 0); }
+      100% { box-shadow: 0 4px 0 var(--accent-shadow), 0 0 0 0 rgba(220, 38, 38, 0); }
     }
 
     .play-scream-btn.playing {
-      background: var(--accent) !important;
+      background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%) !important;
       color: #ffffff !important;
       border-color: #f87171 !important;
       animation: pulseScream 1s infinite;
@@ -192,9 +243,10 @@
     }
 
     .hero-info h1 {
-      font-size: 2.35rem;
+      font-size: clamp(1.85rem, 3.2vw, 2.35rem);
       line-height: 1.2;
       margin-bottom: 16px;
+      color: #ffffff;
     }
 
     .price-box {
@@ -205,7 +257,7 @@
     }
 
     .current-price {
-      font-size: 2.3rem;
+      font-size: clamp(2rem, 3vw, 2.35rem);
       font-weight: 800;
       color: #ef4444;
     }
@@ -217,18 +269,20 @@
     }
 
     .discount-tag {
-      background: rgba(239, 68, 68, 0.15);
+      background: rgba(239, 68, 68, 0.16);
       color: #f87171;
       padding: 4px 10px;
       border-radius: 6px;
       font-size: 0.85rem;
       font-weight: 700;
+      border: 1px solid rgba(239, 68, 68, 0.3);
     }
 
     .hero-desc {
       color: var(--text-muted);
       margin-bottom: 24px;
-      font-size: 1rem;
+      font-size: 0.98rem;
+      line-height: 1.65;
     }
 
     /* Details Table */
@@ -240,47 +294,56 @@
     }
 
     .details-table td {
-      padding: 10px 0;
+      padding: 11px 0;
       border-bottom: 1px solid var(--border);
     }
 
     .details-table td:first-child {
       color: var(--text-muted);
-      width: 40%;
+      width: 42%;
     }
 
-    /* Checkout CTA */
+    /* Primary 3D Checkout Button */
     .btn-submit {
       display: block;
       width: 100%;
       background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
       color: white;
-      border: none;
-      padding: 16px;
-      border-radius: 8px;
+      border: 1px solid #f87171;
+      border-bottom: 3px solid var(--accent-shadow);
+      padding: 17px 20px;
+      border-radius: 12px;
       font-size: 1.1rem;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.05em;
       cursor: pointer;
       margin-top: 24px;
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 20px rgba(220, 38, 38, 0.35);
       text-align: center;
       text-decoration: none;
+      box-shadow: 0 6px 0 var(--accent-shadow), 0 14px 24px rgba(220, 38, 38, 0.4);
+      transition: all 0.15s var(--ease-snappy);
+      user-select: none;
     }
 
     .btn-submit:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 0 var(--accent-shadow), 0 18px 30px rgba(220, 38, 38, 0.55);
+      filter: brightness(1.04);
+    }
+
+    .btn-submit:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 var(--accent-shadow), 0 5px 10px rgba(220, 38, 38, 0.25);
     }
 
     .btn-submit.loading {
       opacity: 0.7;
       pointer-events: none;
+      transform: translateY(2px);
+      box-shadow: 0 4px 0 var(--accent-shadow);
     }
 
-    /* ========================================================
-       BELOW THE FOLD: FEATURES, REVIEWS, FAQ & FOOTER
-    ======================================================== */
+    /* Divider */
     .section-divider {
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
@@ -303,7 +366,7 @@
     }
 
     .section-title {
-      font-size: 2.1rem;
+      font-size: clamp(1.6rem, 3vw, 2.15rem);
       color: #fff;
     }
 
@@ -320,12 +383,14 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 30px 24px;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: transform 0.25s var(--ease-snappy), border-color 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     }
 
     .feature-card:hover {
       transform: translateY(-4px);
-      border-color: var(--gold);
+      border-color: rgba(217, 119, 6, 0.6);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
     }
 
     .feature-icon {
@@ -343,7 +408,7 @@
     .feature-card p {
       color: var(--text-muted);
       font-size: 0.92rem;
-      line-height: 1.55;
+      line-height: 1.6;
     }
 
     /* Reviews Section */
@@ -358,6 +423,7 @@
       margin-bottom: 35px;
       flex-wrap: wrap;
       gap: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.25);
     }
 
     .summary-metric {
@@ -393,6 +459,13 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: transform 0.25s var(--ease-snappy), border-color 0.25s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .review-card:hover {
+      transform: translateY(-3px);
+      border-color: #3f3732;
     }
 
     .review-stars {
@@ -451,11 +524,11 @@
       border-radius: var(--radius);
       margin-bottom: 14px;
       overflow: hidden;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .faq-item:hover {
-      border-color: #3f3732;
+      border-color: #443a34;
     }
 
     .faq-question {
@@ -465,15 +538,20 @@
       align-items: center;
       cursor: pointer;
       font-weight: 700;
-      font-size: 1.02rem;
+      font-size: 1rem;
       color: #fff;
       user-select: none;
+      transition: color 0.2s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--gold-light);
     }
 
     .faq-icon {
       font-size: 1.3rem;
       color: var(--gold-light);
-      transition: transform 0.25s ease;
+      transition: transform 0.3s var(--ease-snappy);
     }
 
     .faq-item.active .faq-icon {
@@ -483,10 +561,10 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 0.3s ease, padding 0.3s ease;
+      transition: max-height 0.35s var(--ease-snappy), padding 0.35s ease;
       color: var(--text-muted);
       font-size: 0.93rem;
-      line-height: 1.6;
+      line-height: 1.65;
       padding: 0 24px;
     }
 
@@ -495,19 +573,19 @@
       padding: 0 24px 22px;
     }
 
-    /* Bottom Sticky/Banner CTA */
+    /* Bottom CTA Banner */
     .bottom-cta-banner {
-      background: radial-gradient(circle at center, #231c17 0%, #12100e 100%);
+      background: radial-gradient(circle at center, #241d18 0%, #12100e 100%);
       border: 1px solid var(--gold);
       border-radius: var(--radius);
       padding: 45px 30px;
       text-align: center;
       margin-bottom: 80px;
-      box-shadow: 0 0 35px rgba(217, 119, 6, 0.15);
+      box-shadow: 0 8px 35px rgba(217, 119, 6, 0.16);
     }
 
     .bottom-cta-banner h2 {
-      font-size: 2.2rem;
+      font-size: clamp(1.75rem, 3.2vw, 2.2rem);
       margin-bottom: 10px;
       color: #fff;
     }
@@ -551,19 +629,104 @@
       gap: 6px;
     }
 
-    /* Responsive */
-    @media (max-width: 900px) {
+    /* ========================================================
+       PHONE & MOBILE-SPECIFIC REFINEMENTS
+    ======================================================== */
+    @media (max-width: 860px) {
+      header {
+        padding: 12px 16px;
+      }
+
+      .logo {
+        font-size: 1.05rem;
+      }
+
+      .nav-cta {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+      }
+
       .hero {
         grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 24px 0 50px;
       }
+
       .gallery-container {
         position: static;
+        max-width: 440px;
+        margin: 0 auto;
+        width: 100%;
       }
-      .feature-grid, .reviews-grid {
+
+      .audio-tester {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        padding: 16px;
+        gap: 12px;
+      }
+
+      .play-scream-btn {
+        width: 100%;
+        padding: 14px 20px;
+      }
+
+      .feature-grid, 
+      .reviews-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
       }
-      .section-title {
-        font-size: 1.7rem;
+
+      .section-divider {
+        margin: 30px 0 50px;
+      }
+
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 0.95rem;
+      }
+
+      .faq-answer {
+        padding: 0 20px;
+      }
+
+      .faq-item.active .faq-answer {
+        padding: 0 20px 18px;
+      }
+
+      .bottom-cta-banner {
+        padding: 35px 20px;
+      }
+
+      .btn-submit {
+        padding: 16px 18px;
+        font-size: 1.05rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 16px;
+      }
+
+      .price-box {
+        gap: 10px;
+      }
+
+      .reviews-summary {
+        gap: 15px;
+        padding: 18px 12px;
+      }
+
+      .summary-metric .val {
+        font-size: 1.85rem;
+      }
+
+      .footer-badges {
+        gap: 12px;
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
@@ -577,10 +740,10 @@
 
   <!-- Header -->
   <header>
-    <div class="logo">
+    <a href="#" class="logo">
       <span>💀</span>
       <span>MICTLAN REPLICAS</span>
-    </div>
+    </a>
     <a href="#buy" class="nav-cta shopify-checkout-trigger">Claim Yours — $32.99</a>
   </header>
 
@@ -597,7 +760,7 @@
         <!-- Audio Player Widget -->
         <div class="audio-tester">
           <div>
-            <div style="font-weight: 700; font-size: 0.95rem;">Experience The Terror</div>
+            <div style="font-weight: 700; font-size: 0.95rem; color: #fff;">Experience The Terror</div>
             <div style="font-size: 0.8rem; color: var(--text-muted);">Warning: Authentic screaming acoustic chamber</div>
           </div>
           <button class="play-scream-btn" id="soundBtn">
@@ -930,7 +1093,6 @@
     }
 
     // Shopify Storefront API → creates a cart and sends the customer to Shopify Checkout.
-    // Shopify collects the customer's shipping address and payment details securely.
     const SHOPIFY_DOMAIN = '0p8ajm-u6.myshopify.com';
     const SHOPIFY_STOREFRONT_TOKEN = 'a1714bd31d31166f471adc488c179cc4';
     const SHOPIFY_PRODUCT_ID = 'gid://shopify/Product/11215861088593';
@@ -951,7 +1113,6 @@
       try {
         const endpoint = `https://${SHOPIFY_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 
-        // Get the currently published variant for this product.
         const productQuery = `
           query GetProduct($id: ID!) {
             product(id: $id) {
@@ -986,7 +1147,6 @@
 
         if (!variant) throw new Error('The Obsidian Black variant is currently unavailable.');
 
-        // Create a Shopify cart containing one whistle and get its checkout URL.
         const cartMutation = `
           mutation CreateCart($input: CartInput) {
             cartCreate(input: $input) {
