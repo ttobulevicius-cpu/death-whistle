@@ -258,7 +258,7 @@
       font-size: 1rem;
     }
 
-    /* Two Variant Options */
+    /* Variant Options */
     .variant-section {
       margin-bottom: 28px;
     }
@@ -471,7 +471,7 @@
 
   <!-- Top Announcement Bar -->
   <div class="top-bar">
-    ⚡ WORLDWIDE FLASH PROMOTION: 50% OFF TODAY ONLY • FREE WORLDWIDE TRACKED SHIPPING
+    ⚡ FLASH PROMOTION: 50% OFF TODAY ONLY • FREE WORLDWIDE TRACKED SHIPPING
   </div>
 
   <!-- Header -->
@@ -496,11 +496,11 @@
 
         <!-- Two Product Thumbnails -->
         <div class="thumbnails">
-          <div class="thumb active" id="thumbBlack" onclick="selectVariant('Obsidian Black', 'https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg', this)">
-            <img src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Obsidian Black" />
+          <div class="thumb active" id="thumbBlack" onclick="selectVariant('Obsidian Black')">
+            <img id="imgThumbBlack" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Obsidian Black" />
           </div>
-          <div class="thumb" id="thumbBronze" onclick="selectVariant('Relic Bronze', 'bronze.jpg', this)">
-            <img src="bronze.jpg" onerror="this.src='https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg'" alt="Relic Bronze" />
+          <div class="thumb" id="thumbBronze" onclick="selectVariant('Relic Bronze')">
+            <img id="imgThumbBronze" src="bronze.jpg" onerror="this.onerror=null; this.src='https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg';" alt="Relic Bronze" />
           </div>
         </div>
 
@@ -549,7 +549,7 @@
             <td><strong>Ritual Replica / Pranks / Collector Display</strong></td>
           </tr>
           <tr>
-            <td>Worldwide Shipping</td>
+            <td>Shipping</td>
             <td><strong>Free Tracked Express Delivery</strong></td>
           </tr>
         </table>
@@ -558,25 +558,26 @@
         <div class="variant-section">
           <span class="variant-label">Select Finish: <strong id="selectedColorName" style="color: var(--gold-light);">Obsidian Black</strong></span>
           <div class="variant-grid">
-            <button class="variant-btn active" id="btnBlack" onclick="selectVariant('Obsidian Black', 'https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg', document.getElementById('thumbBlack'))">
+            <button class="variant-btn active" id="btnBlack" onclick="selectVariant('Obsidian Black')">
               <span class="swatch swatch-black"></span> Obsidian Black
             </button>
-            <button class="variant-btn" id="btnBronze" onclick="selectVariant('Relic Bronze', 'bronze.jpg', document.getElementById('thumbBronze'))">
+            <button class="variant-btn" id="btnBronze" onclick="selectVariant('Relic Bronze')">
               <span class="swatch swatch-bronze"></span> Relic Bronze
             </button>
           </div>
         </div>
 
+        <!-- Updated Button -->
         <a href="#checkout" style="display:block; text-align:center; text-decoration:none;" class="btn-submit">
-          PROCEED TO WORLDWIDE CHECKOUT
+          PROCEED TO CHECKOUT
         </a>
       </div>
     </section>
 
-    <!-- Worldwide Checkout Section -->
+    <!-- Checkout Section -->
     <section class="checkout-section" id="checkout">
       <div class="checkout-title">
-        <h2>Global Worldwide Checkout</h2>
+        <h2>Secure Checkout</h2>
         <p style="color: var(--text-muted); margin-top: 6px;">Encrypted 256-Bit SSL Checkout • Dispatched within 24 Hours</p>
       </div>
 
@@ -586,7 +587,6 @@
           <h3 style="margin-bottom: 20px; font-size: 1.25rem;">1. Shipping & Destination</h3>
           <form id="orderForm" onsubmit="handleOrder(event)">
             
-            <!-- Worldwide Country Selector -->
             <div class="form-group">
               <label for="country">Country / Region (Worldwide Delivery)</label>
               <select id="country" class="form-control" required>
@@ -631,7 +631,7 @@
                   <option value="NZ">New Zealand</option>
                   <option value="SG">Singapore</option>
                   <option value="AE">United Arab Emirates</option>
-                  <option value="OTHER">Other Countries (Worldwide)</option>
+                  <option value="OTHER">Other Countries</option>
                 </optgroup>
               </select>
             </div>
@@ -712,7 +712,7 @@
             <span>-$33.00</span>
           </div>
           <div class="order-summary-item">
-            <span>Tracked Worldwide Shipping</span>
+            <span>Tracked Shipping</span>
             <span style="color: #4ade80;">FREE</span>
           </div>
 
@@ -722,7 +722,7 @@
           </div>
 
           <div style="margin-top: 24px; padding: 14px; background: #0c0b0a; border-radius: 8px; border: 1px dashed var(--border); font-size: 0.82rem; color: var(--text-muted);">
-            🌍 <strong>Worldwide Guarantee:</strong> All orders are dispatched with full international tracking. Includes our 30-day "Deadly Scream" money-back guarantee.
+            🛡️ <strong>Risk-Free Guarantee:</strong> All orders are dispatched with full tracking. Includes our 30-day "Deadly Scream" money-back guarantee.
           </div>
         </div>
       </div>
@@ -742,26 +742,47 @@
   </div>
 
   <script>
-    // Variant Selection Logic (Black vs Bronze)
-    function selectVariant(colorName, imgSrc, thumbElement) {
+    // Online Image URLs
+    const BLACK_IMAGE_URL = 'https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg';
+    const BRONZE_FALLBACK_URL = 'https://img.kwcdn.com/product/open/b714e4267189441691240aeebbcb150b-goods.jpeg';
+
+    // Variant Selection Logic with Automatic Image Fallback
+    function selectVariant(colorName) {
       document.getElementById('selectedColorName').textContent = colorName;
       document.getElementById('summaryVariant').textContent = `Color: ${colorName}`;
-      
+
       const mainImg = document.getElementById('mainProductImage');
       const summaryImg = document.getElementById('summaryThumb');
-      mainImg.src = imgSrc;
-      summaryImg.src = imgSrc;
 
-      // Update button active state
-      document.getElementById('btnBlack').classList.toggle('active', colorName === 'Obsidian Black');
-      document.getElementById('btnBronze').classList.toggle('active', colorName === 'Relic Bronze');
+      if (colorName === 'Obsidian Black') {
+        mainImg.src = BLACK_IMAGE_URL;
+        summaryImg.src = BLACK_IMAGE_URL;
 
-      // Update thumbnail active state
-      document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
-      if (thumbElement) thumbElement.classList.add('active');
+        document.getElementById('btnBlack').classList.add('active');
+        document.getElementById('btnBronze').classList.remove('active');
+        document.getElementById('thumbBlack').classList.add('active');
+        document.getElementById('thumbBronze').classList.remove('active');
+      } else {
+        // Tries your local bronze.jpg first; if missing, falls back to the online replica image automatically
+        const testImg = new Image();
+        testImg.onload = function() {
+          mainImg.src = 'bronze.jpg';
+          summaryImg.src = 'bronze.jpg';
+        };
+        testImg.onerror = function() {
+          mainImg.src = BRONZE_FALLBACK_URL;
+          summaryImg.src = BRONZE_FALLBACK_URL;
+        };
+        testImg.src = 'bronze.jpg';
+
+        document.getElementById('btnBronze').classList.add('active');
+        document.getElementById('btnBlack').classList.remove('active');
+        document.getElementById('thumbBronze').classList.add('active');
+        document.getElementById('thumbBlack').classList.remove('active');
+      }
     }
 
-    // Audio Player (Plays death-whistle.mp3 if found, else uses Web Audio synthesizer)
+    // Audio Player
     const soundBtn = document.getElementById('soundBtn');
     const customAudio = document.getElementById('customAudio');
 
