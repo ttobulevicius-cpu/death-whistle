@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Aztec Death Whistle | Handcrafted Terrifying Replica</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0a0908;
+      --bg-surface: #141210;
+      --bg-card: #1c1917;
+      --border: #2c2724;
+      --accent: #dc2626;
+      --accent-hover: #b91c1c;
+      --gold: #d97706;
+      --gold-light: #fbbf24;
+      --text-main: #f5f5f4;
+      --text-muted: #a8a29e;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, .brand-font {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* Promo Ticker */
+    .top-bar {
+      background: linear-gradient(90deg, #991b1b, #dc2626, #991b1b);
+      color: #fff;
+      text-align: center;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+
+    /* Navigation */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      border-bottom: 1px solid var(--border);
+      background: rgba(10, 9, 8, 0.85);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--gold-light);
+    }
+
+    .nav-cta {
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      padding: 10px 22px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 15px rgba(220, 38, 38, 0.4);
+    }
+
+    .nav-cta:hover {
+      background: var(--accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 60px 0 80px;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .gallery-container {
+      position: relative;
+    }
+
+    .main-image-box {
+      width: 100%;
+      height: 480px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: radial-gradient(circle at center, #2e2621 0%, #141210 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.8));
+      transition: transform 0.4s ease;
+    }
+
+    .main-image-box:hover .product-img {
+      transform: scale(1.04) rotate(-2deg);
+    }
+
+    .badge-loud {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(0,0,0,0.7);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--accent);
+      color: #fca5a5;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Audio Demo Button */
+    .audio-tester {
+      margin-top: 16px;
+      padding: 16px;
+      border-radius: var(--radius);
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .play-scream-btn {
+      background: #27211e;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .play-scream-btn:hover {
+      background: var(--gold);
+      color: #000;
+    }
+
+    /* Product Details */
+    .hero-info .rating {
+      color: var(--gold-light);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .hero-info h1 {
+      font-size: 2.7rem;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: #fff;
+    }
+
+    .price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .current-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ef4444;
+    }
+
+    .old-price {
+      font-size: 1.25rem;
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .discount-tag {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      font-size: 1.05rem;
+    }
+
+    /* Variants */
+    .variant-section {
+      margin-bottom: 28px;
+    }
+
+    .variant-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      display: block;
+      color: var(--text-muted);
+    }
+
+    .variant-options {
+      display: flex;
+      gap: 12px;
+    }
+
+    .variant-btn {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-surface);
+      color: var(--text-main);
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .variant-btn.active {
+      border-color: var(--gold-light);
+      background: #25201c;
+      color: var(--gold-light);
+    }
+
+    .swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .swatch-bone { background: #e5e5d8; }
+    .swatch-obsidian { background: #1c1c1e; border: 1px solid #444; }
+    .swatch-blood { background: #7f1d1d; }
+
+    /* Features Grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 40px 0;
+    }
+
+    .spec-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      padding: 24px 20px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .spec-card .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .spec-card h4 {
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .spec-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Checkout Section */
+    .checkout-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .checkout-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .checkout-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .checkout-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-muted);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: #0d0c0b;
+      border: 1px solid var(--border);
+      color: white;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--gold-light);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .order-summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .order-summary-total {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+      color: white;
+      border: none;
+      padding: 16px;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 24px;
+      letter-spacing: 0.05em;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+    }
+
+    .btn-submit:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Modal / Alert */
+    .success-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .success-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--gold);
+      padding: 40px;
+      border-radius: var(--radius);
+      max-width: 450px;
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero, .checkout-grid {
+        grid-template-columns: 1fr;
+      }
+      .specs-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    ⚡ FLASH PROMOTION: 50% OFF TODAY ONLY • FREE WORLDWIDE TRACKED SHIPPING
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <span>💀</span>
+      <span>MICTLAN ARTIFACTS</span>
+    </div>
+    <a href="#checkout" class="nav-cta">Claim Yours — $24.99</a>
+  </header>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="gallery-container">
+        <div class="main-image-box">
+          <div class="badge-loud">🔊 125+ DECIBEL SHRIEK</div>
+          <img id="mainProductImage" class="product-img" src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" alt="Aztec Death Whistle Replica Skull" />
+        </div>
+
+        <!-- Synthesized Audio Demo Generator -->
+        <div class="audio-tester">
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Experience The Terror</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">Warning: Simulated Aztec screaming acoustic</div>
+          </div>
+          <button class="play-scream-btn" id="soundBtn">
+            <span>🔊</span> Hear It Scream
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-info">
+        <div class="rating">
+          ★★★★★ <span style="color: var(--text-muted); margin-left: 4px;">4.9/5 (1,842 verified reviews)</span>
+        </div>
+        <h1>The Handcrafted Aztec Death Whistle</h1>
+        
+        <div class="price-box">
+          <span class="current-price">$24.99</span>
+          <span class="old-price">$49.99</span>
+          <span class="discount-tag">SAVE 50%</span>
+        </div>
+
+        <p class="hero-desc">
+          Crafted from dense resonance-grade resin and clay composite, this historic replica generates the terrifying sound of a thousand screaming souls in agony. Used in ancient Aztec rituals and psychological warfare to freeze enemies in sheer terror.
+        </p>
+
+        <!-- Variants -->
+        <div class="variant-section">
+          <span class="variant-label">SELECT ARTIFACT FINISH: <strong id="selectedVariantName" style="color: #fff;">Ancient Bone</strong></span>
+          <div class="variant-options">
+            <button class="variant-btn active" data-name="Ancient Bone" data-img="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg">
+              <span class="swatch swatch-bone"></span> Ancient Bone
+            </button>
+            <button class="variant-btn" data-name="Obsidian Void" data-img="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg">
+              <span class="swatch swatch-obsidian"></span> Obsidian
+            </button>
+            <button class="variant-btn" data-name="Blood Ochre" data-img="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg">
+              <span class="swatch swatch-blood"></span> Blood Ochre
+            </button>
+          </div>
+        </div>
+
+        <a href="#checkout" style="display:block; text-align:center; text-decoration:none;" class="btn-submit">
+          ORDER NOW & SAVE 50%
+        </a>
+      </div>
+    </section>
+
+    <!-- Features / Specs -->
+    <section class="specs-grid">
+      <div class="spec-card">
+        <span class="icon">⚡</span>
+        <h4>Ear-Splitting Decibels</h4>
+        <p>Acoustically tuned dual-chamber system generates real human shrieks reaching up to 125dB+.</p>
+      </div>
+      <div class="spec-card">
+        <span class="icon">🏺</span>
+        <h4>Hand-Polished Resin</h4>
+        <p>Meticulously textured to capture the weathered feel of excavated Mesoamerican artifacts.</p>
+      </div>
+      <div class="spec-card">
+        <span class="icon">📦</span>
+        <h4>Collector's Gift Ready</h4>
+        <p>Includes a woven cord necklace and a protective parchment gift box.</p>
+      </div>
+    </section>
+
+    <!-- Checkout Section -->
+    <section class="checkout-section" id="checkout">
+      <div class="checkout-title">
+        <h2>Secure Your Artifact</h2>
+        <p style="color: var(--text-muted); margin-top: 6px;">Guaranteed safe & encrypted checkout</p>
+      </div>
+
+      <div class="checkout-grid">
+        <!-- Customer Info Form -->
+        <div class="checkout-card">
+          <h3 style="margin-bottom: 20px; font-size: 1.25rem;">1. Shipping Address</h3>
+          <form id="orderForm" onsubmit="handleOrder(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" required placeholder="John" />
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" required placeholder="Doe" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="form-control" required placeholder="john@example.com" />
+            </div>
+
+            <div class="form-group">
+              <label>Street Address</label>
+              <input type="text" class="form-control" required placeholder="123 Ancient Temple Way" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" required placeholder="City" />
+              </div>
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" required placeholder="10001" />
+              </div>
+            </div>
+
+            <h3 style="margin: 28px 0 20px; font-size: 1.25rem;">2. Payment Details</h3>
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" class="form-control" placeholder="•••• •••• •••• ••••" required />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expiry Date</label>
+                <input type="text" class="form-control" placeholder="MM/YY" required />
+              </div>
+              <div class="form-group">
+                <label>CVV / CVC</label>
+                <input type="text" class="form-control" placeholder="123" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+              COMPLETE PURCHASE — $24.99
+            </button>
+          </form>
+        </div>
+
+        <!-- Summary -->
+        <div class="checkout-card">
+          <h3 style="margin-bottom: 20px; font-size: 1.25rem;">Order Summary</h3>
+          <div style="display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border);">
+            <img src="https://img.kwcdn.com/product/fancy/1aca0b30-cde6-4da1-ac6c-f72760ec78dd.jpg" style="width: 70px; height: 70px; border-radius: 8px; object-fit: cover; border: 1px solid var(--border);" alt="Cart Thumbnail">
+            <div>
+              <div style="font-weight: 700;">Aztec Screaming Death Whistle</div>
+              <div style="font-size: 0.85rem; color: var(--gold-light);" id="summaryVariant">Variant: Ancient Bone</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Qty: 1</div>
+            </div>
+          </div>
+
+          <div class="order-summary-item">
+            <span>Retail Price</span>
+            <span>$49.99</span>
+          </div>
+          <div class="order-summary-item" style="color: #4ade80;">
+            <span>Special Promotional Discount</span>
+            <span>-$25.00</span>
+          </div>
+          <div class="order-summary-item">
+            <span>Tracked Shipping</span>
+            <span style="color: #4ade80;">FREE</span>
+          </div>
+
+          <div class="order-summary-total">
+            <span>Total</span>
+            <span>$24.99</span>
+          </div>
+
+          <div style="margin-top: 24px; padding: 14px; background: #0c0b0a; border-radius: 8px; border: 1px dashed var(--border); font-size: 0.8rem; color: var(--text-muted);">
+            🛡️ <strong>Risk-Free Guarantee:</strong> If the sound isn't horrifying enough to send shivers down your spine, return it within 30 days for a 100% refund.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Success Modal -->
+  <div class="success-modal" id="modal">
+    <div class="success-box">
+      <span style="font-size: 3rem;">💀</span>
+      <h2 style="margin: 16px 0 8px; color: var(--gold-light);">ORDER CONFIRMED</h2>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 24px;">
+        Your Aztec Screaming Death Whistle is being prepared. Prepare your lungs and warn your neighbors.
+      </p>
+      <button class="nav-cta" style="border:none; cursor:pointer;" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    // Variant Selection Logic
+    const variantButtons = document.querySelectorAll('.variant-btn');
+    const selectedVariantText = document.getElementById('selectedVariantName');
+    const summaryVariantText = document.getElementById('summaryVariant');
+
+    variantButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        variantButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const name = btn.getAttribute('data-name');
+        selectedVariantText.textContent = name;
+        summaryVariantText.textContent = `Variant: ${name}`;
+      });
+    });
+
+    // Sound Synthesizer (Realistic howling screech using Web Audio API)
+    const soundBtn = document.getElementById('soundBtn');
+    soundBtn.addEventListener('click', () => {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        const ctx = new AudioCtx();
+
+        // White Noise buffer for the wind/shriek friction
+        const bufferSize = ctx.sampleRate * 2.5; // 2.5 seconds
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = Math.random() * 2 - 1;
+        }
+
+        const noise = ctx.createBufferSource();
+        noise.buffer = buffer;
+
+        // Bandpass filter to model acoustic whistle resonance
+        const filter = ctx.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(1400, ctx.currentTime);
+        filter.frequency.linearRampToValueAtTime(3200, ctx.currentTime + 0.8);
+        filter.frequency.linearRampToValueAtTime(900, ctx.currentTime + 2.5);
+        filter.Q.value = 6;
+
+        // Gain envelope
+        const gainNode = ctx.createGain();
+        gainNode.gain.setValueAtTime(0.01, ctx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(0.8, ctx.currentTime + 0.3);
+        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2.5);
+
+        noise.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(ctx.destination);
+
+        noise.start();
+        soundBtn.textContent = '🔊 Shrieking...';
+        setTimeout(() => {
+          soundBtn.innerHTML = '<span>🔊</span> Hear It Scream';
+        }, 2500);
+      } catch(e) {
+        alert("Audio playback not supported in this browser.");
+      }
+    });
+
+    // Form Checkout Simulation
+    function handleOrder(e) {
+      e.preventDefault();
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').style.display = 'none';
+      document.getElementById('orderForm').reset();
+    }
+  </script>
+</body>
+</html>
